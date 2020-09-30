@@ -1,0 +1,45 @@
+<script src="../vue.js"></script>
+<link rel="stylesheet" href="./styles.css" />
+<div id="exercise">
+  <!-- 1) Start the Effect with the Button. The Effect should alternate the 
+  "highlight" or "shrink" class on each new setInterval tick (attach respective
+  class to the div with id "effect" below) -->
+  <div>
+    <button @click="startEffect">Start Effect</button>
+    <div :class="effectClass" id="effect"></div>
+  </div>
+  <hr>
+  <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
+  <div :class="[arraySyntaxClass]">I got no class :(</div>
+  <hr>
+  <!-- 3) Let the user enter a class (create some example classes) and attach it -->
+  <div>
+    <input @keydown.enter="updateUserClass" :value="user_class" type="text" />
+    <div :class="user_class"> This is no 3 div</div>
+  </div>
+  <hr>
+  <!-- 4) Let the user enter a class and enter true/ false for another class
+    (create some example classes) and attach the classes -->
+  <div>
+    <input @keydown.enter="updateUserClass" :value="user_class" type="text" />
+    <input @keydown.enter="updateUserCondition" :value="condition" type="text" />
+    <div :class="[user_class, hasBorder]">This is div 4</div>
+  </div>
+  <hr>
+  <!-- 5) Repeat 3) but now with values for styles (instead of class names).
+    Attach the respective styles.  -->
+  <div>
+    <input @keydown.enter="updateStyle" type="text" />
+    <div :style="user_style">This is div 5</div>
+  </div>
+  <hr>
+  <!-- 6) Create a simple progress bar with setInterval and style bindings.
+    Start it by hitting the below button. -->
+  <div>
+    <button @click="startProgress">Start Progress</button>
+    <div  :style="progress_style"></div>
+  </div>
+  <hr>
+</div>
+
+<script src="./app.js"></script>
