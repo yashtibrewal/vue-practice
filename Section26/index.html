@@ -106,14 +106,14 @@
         <div class="col-12 center" v-for="(item, index) in logs">
           <div
             v-if="index%2==0"
-            style="background-color: rgb(255, 180, 180)"
+            style="background-color: rgb(255, 180, 180); color:red;"
             class="col-12 col-sm-8 center log"
           >
             {{item}}
           </div>
           <div
             v-if="index%2==1"
-            style="background-color: rgb(180, 180, 255)"
+            style="background-color: rgb(180, 180, 255); color:blue;"
             class="col-12 col-sm-8 center log"
           >
             {{item}}

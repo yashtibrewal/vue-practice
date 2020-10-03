@@ -7,7 +7,9 @@
   background-color: green;
   width: 80%;
   height: 50px;
+  transition-duration: 500ms;
   z-index: 2;
+  color:white;
 }
 .healthrow {
   position: relative;
