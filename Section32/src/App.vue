@@ -5,13 +5,13 @@
       <hr />
       <quote-input :quote_list="quote_list" :max="max"></quote-input>
       <hr />
-      <quote-card :quote_list="quote_list"></quote-card>
+      <quote-grid :quote_list="quote_list"></quote-grid>
     </div>
   </div>
 </template>
 
 <script>
-import Card from "./components/Card";
+import QuotesGrid from "./components/QuotesGrid";
 import QuoteInput from "./components/QuoteInput";
 import QuoteBar from "./components/QuoteBar";
 
@@ -21,8 +21,7 @@ export default {
       quote_list: [
         {
           id: 1,
-          text: `“Be yourself; everyone else is already taken.”
-― Oscar Wilde`,
+          text: `“Be yourself; everyone else is already taken.” ― Oscar Wilde`,
         },
       ],
       max: 10,
@@ -36,7 +35,7 @@ export default {
   components: {
     "quote-bar": QuoteBar,
     "quote-input": QuoteInput,
-    "quote-card": Card,
+    "quote-grid": QuotesGrid,
   },
 };
 </script>
