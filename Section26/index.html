@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <body class="container">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./script/jquery-3.5.1.slim.min.js"></script>
+    <script src="./script/popper.min.js"></script>
+    <script src="./script/bootstrap.min.js"></script>
+    <div id="app">
+      <!-- Row for the message for win or loss -->
+      <div v-if="player_won || monster_won" class="row box game-status">
+        <div class="col-12 center" v-if="player_won">
+          <span style="color: green">Congratulations! You won.</span>
+        </div>
+        <div class="col-12 center" v-if="monster_won">
+          <span style="color: red">Better luck next time!</span>
+        </div>
+      </div>
+      <!-- Row for the player names -->
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="player-name">You</div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="player-name">Monster</div>
+        </div>
+      </div>
+      <!-- Row for the health bar -->
+      <div class="row box player-bars">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="healthrow">
+            <div
+              :style="getPlayerBarWidth(player_health)"
+              class="center healthbar"
+            >
+              {{player_health}}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="healthrow">
+            <div
+              :style="getPlayerBarWidth(monster_health)"
+              class="center healthbar"
+            >
+              {{monster_health}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Row for buttons to play the game -->
+      <div class="row box center optionsbar">
+        <div
+          class="col-8 col-sm-8 col-md-3 col-lg-3 col-xl-3"
+          v-show="!isStarted"
+        >
+          <button class="btn btn-primary" @click="startGame">
+            Start New Game
+          </button>
+        </div>
+        <div
+          class="col-8 col-sm-8 col-md-2 col-lg-2 col-xl-2"
+          v-show="isStarted"
+        >
+          <button @click="attack" class="btn btn-danger col-12">ATTACK</button>
+        </div>
+        <div
+          class="col-8 col-sm-8 col-md-3 col-lg-3 col-xl-3"
+          v-show="isStarted"
+        >
+          <button @click="attack($event,true)" class="btn btn-warning col-12">
+            SPECIAL ATTACK
+          </button>
+        </div>
+        <div
+          class="col-8 col-sm-8 col-md-2 col-lg-2 col-xl-2"
+          v-show="isStarted"
+        >
+          <button @click="heal" class="btn btn-success col-12">HEAL</button>
+        </div>
+        <div
+          class="col-8 col-sm-8 col-md-2 col-lg-2 col-xl-2"
+          v-show="isStarted"
+        >
+          <button @click="giveUp" class="btn btn-info col-12">GIVE UP</button>
+        </div>
+      </div>
+      <!-- Row for logs -->
+      <div v-if="hasLogs" class="row box logs">
+        <div class="col-12 center">History</div>
+        <div class="col-12 center" v-for="(item, index) in logs">
+          <div
+            v-if="index%2==0"
+            style="background-color: rgb(255, 180, 180)"
+            class="col-12 col-sm-8 center log"
+          >
+            {{item}}
+          </div>
+          <div
+            v-if="index%2==1"
+            style="background-color: rgb(180, 180, 255)"
+            class="col-12 col-sm-8 center log"
+          >
+            {{item}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./script/app.js"></script>
+</html>
